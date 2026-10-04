@@ -242,6 +242,9 @@ TG-BUILD-SETTINGS: $(CONFIGDEPS) $(FORCE_SETTINGS_BUILD)
 		bs >"$@"; \
 	elif test z"$(FORCE_SETTINGS_BUILD)" = z; then touch "$@"; fi
 
+test-worktrees: FORCE
+	python3 t/worktree_regressions.py
+
 test-sha1: all FORCE
 	+$(Q)cd t && TESTLIB_GIT_DEFAULT_HASH=sha1 $(MAKE) all
 
